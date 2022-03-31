@@ -25,7 +25,11 @@ function App() {
 			<Routes>
 				<Route
 					path="/"
-					element={<HomePage />}
+					element={
+						<FilterProvider>
+							<HomePage />
+						</FilterProvider>
+					}
 				/>
 				<Route
 					path="login"
@@ -36,7 +40,7 @@ function App() {
 					element={<Signup />}
 				/>
 				<Route
-					path="forgot-password"
+					path="forgot_password"
 					element={<ForgotPassword />}
 				/>
 				<Route
