@@ -1,18 +1,50 @@
 import React from "react";
 import "../../styles/root.css";
 import { Link } from "react-router-dom";
+import {
+	vision_img,
+	quality,
+	fast_delivery,
+	support,
+	warranty,
+	cpu,
+} from "../../assets/images";
+import { AllProducts } from "../../context/ContextProducts";
+import { Loader } from "../Loader/Loader";
 
+import { TrendingCard } from "../";
+import { Rating } from "../../utils/filter";
+import { UseFilter } from "../../context/FilterProvider";
+import { ReducerProducts } from "../../reducer/ReducerProducts";
+import { BestSellingCard } from "../Cards/BestSellingCard";
 export function HomePage() {
+	const { productState } = AllProducts();
+	const { data: products, loading } =
+		productState;
+
+	const getAPI = {
+		Api: "/api/categories",
+		property: "categories",
+	};
+	const {
+		state: { data: categories },
+	} = ReducerProducts(getAPI);
+
+	const TrendingCartProducts = Rating(
+		products,
+		5
+	);
+
 	return (
 		<>
 			<main className="col-12">
 				<div className="big-container">
 					<img
 						className="imageContainer"
-						src="../images/img2.webp"
+						src={vision_img}
 						width="900"
 						height="700"
-						alt=""
+						alt="homePage_img"
 					/>
 
 					<div className="video-inner-container">
@@ -44,13 +76,14 @@ export function HomePage() {
 					</div>
 				</div>
 
+				{/*----------------Service Card Section----------------*/}
 				<section>
 					<div className="sm-card-main-container flex-space-evenly col-11">
 						<div className="sm-card-container sm-card-shadow padding-normal flex-row-center AlertError imgTransition">
 							<img
 								className="sm-card-icons"
-								src="../images/quality.png"
-								alt=""
+								src={quality}
+								alt="quality"
 							/>
 							<h3 className="sm-card-text padding-small-left1">
 								Provide Best Quality
@@ -60,8 +93,8 @@ export function HomePage() {
 						<div className="sm-card-container sm-card-shadow padding-normal flex-row-center AlertWarning imgTransition">
 							<img
 								className="sm-card-icons"
-								src="../images/fast-delivery.png"
-								alt=""
+								src={fast_delivery}
+								alt="fast_delivery"
 							/>
 							<h3 className="sm-card-text padding-small-left1">
 								Provide Fast Delivery
@@ -71,8 +104,8 @@ export function HomePage() {
 						<div className="sm-card-container sm-card-shadow padding-normal flex-row-center AlertInfo imgTransition">
 							<img
 								className="sm-card-icons"
-								src="../images/support.png"
-								alt=""
+								src={support}
+								alt="support"
 							/>
 							<h3 className="sm-card-text padding-small-left1">
 								Provide Customer Support
@@ -82,8 +115,8 @@ export function HomePage() {
 						<div className="sm-card-container sm-card-shadow padding-normal flex-row-center AlertSuccess imgTransition">
 							<img
 								className="sm-card-icons"
-								src="../images/warranty.png"
-								alt=""
+								src={warranty}
+								alt="warranty"
 							/>
 							<h3 className="sm-card-text padding-small-left1">
 								Provide Warranty
@@ -101,8 +134,8 @@ export function HomePage() {
 							<section className="flex-row-start">
 								<img
 									className="margin-0 cart-img"
-									src="../images/pc-svg-1.svg"
-									alt=""
+									src={cpu}
+									alt="cpu"
 								/>
 							</section>
 
@@ -117,16 +150,8 @@ export function HomePage() {
 
 								<span className="card-container-price-icons card-footer">
 									<span className="card-price">
-										<span>$200</span>
-										<del>$300</del>
-									</span>
-									<span className="optionContainer">
-										<button className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal">
-											Add
-											<i className="material-icons">
-												add_shopping_cart
-											</i>
-										</button>
+										<span>$2000</span>
+										<del>$3000</del>
 									</span>
 								</span>
 							</span>
@@ -136,8 +161,8 @@ export function HomePage() {
 							<section className="flex-row-start">
 								<img
 									className="margin-0 cart-img"
-									src="../images/pc-svg-1.svg"
-									alt=""
+									src={cpu}
+									alt="cpu"
 								/>
 							</section>
 
@@ -152,16 +177,8 @@ export function HomePage() {
 
 								<span className="card-container-price-icons card-footer">
 									<span className="card-price">
-										<span>$200</span>
-										<del>$300</del>
-									</span>
-									<span className="optionContainer">
-										<button className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal">
-											Add
-											<i className="material-icons">
-												add_shopping_cart
-											</i>
-										</button>
+										<span>$2000</span>
+										<del>$3000</del>
 									</span>
 								</span>
 							</span>
@@ -171,8 +188,8 @@ export function HomePage() {
 							<section className="flex-row-start">
 								<img
 									className="margin-0 cart-img"
-									src="../images/pc-svg-1.svg"
-									alt=""
+									src={cpu}
+									alt="cpu"
 								/>
 							</section>
 
@@ -187,16 +204,8 @@ export function HomePage() {
 
 								<span className="card-container-price-icons card-footer">
 									<span className="card-price">
-										<span>$200</span>
-										<del>$300</del>
-									</span>
-									<span className="optionContainer">
-										<button className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal">
-											Add
-											<i className="material-icons">
-												add_shopping_cart
-											</i>
-										</button>
+										<span>$2000</span>
+										<del>$3000</del>
 									</span>
 								</span>
 							</span>
@@ -206,8 +215,8 @@ export function HomePage() {
 							<section className="flex-row-start">
 								<img
 									className="margin-0 cart-img"
-									src="../images/pc-svg-1.svg"
-									alt=""
+									src={cpu}
+									alt="cpu"
 								/>
 							</section>
 
@@ -222,16 +231,8 @@ export function HomePage() {
 
 								<span className="card-container-price-icons card-footer">
 									<span className="card-price">
-										<span>$200</span>
-										<del>$300</del>
-									</span>
-									<span className="optionContainer">
-										<button className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal">
-											Add
-											<i className="material-icons">
-												add_shopping_cart
-											</i>
-										</button>
+										<span>$2000</span>
+										<del>$3000</del>
 									</span>
 								</span>
 							</span>
@@ -241,58 +242,52 @@ export function HomePage() {
 
 				{/* <!-------------------------------BestSelling Products End-------------------------------> */}
 
+				{/* <!-------------------------------Categories start-------------------------------> */}
 				<div className="mid-container AlertError col-12">
-					{/* <!-------------------------Card Container start--------------------------> */}
-					<div className="card-container buttonHoverShadow">
-						<span
-							className="card-container card-box cardBadge box-shadow"
-							data-label="Trending"
-						>
-							<section className="img-card-offer padding-normal">
-								<img
-									className="imgcard"
-									src="../images/pc-svg-1.svg"
-									alt=""
+					{console.log(
+						"categories:",
+						categories
+					)}
+
+					{loading ? (
+						<Loader
+							type="spinningBubbles"
+							color="#fff"
+						/>
+					) : (
+						categories.length > 0 &&
+						categories.map((item) => (
+							<Link to="/products">
+								<BestSellingCard
+									key={item.id}
+									props={item}
+									value={item}
 								/>
-								<button className="material-icons-text card-wishlist-icons buttonHoverShadow AvatarImage AvatarIcons flex-row-center icon-wishlist">
-									<i className="material-icons">
-										favorite
-									</i>
-								</button>
-							</section>
+							</Link>
+						))
+					)}
+				</div>
 
-							<span className="card-text-container card-brand-text">
-								<span className="card-description">
-									<h5>
-										Product description One
-									</h5>
-									<p>
-										Lorem ipsum dolor sit
-										amet consectetur
-										adipisicing elit.
-									</p>
-									<span className="rating-container"></span>
-									<h6>product type</h6>
-								</span>
+				{/* <!-------------------------------Categories End-------------------------------> */}
 
-								<span className="card-container-price-icons card-footer">
-									<span className="card-price">
-										<span>$200</span>
-										<del>$300</del>
-									</span>
-									<span className="optionContainer">
-										<button className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal">
-											Add
-											<i className="material-icons">
-												add_shopping_cart
-											</i>
-										</button>
-									</span>
-								</span>
-							</span>
-						</span>
-					</div>
-					{/* <!-------------------------Card Container end--------------------------> */}
+				<div className="mid-container AlertError col-12">
+					{loading ? (
+						<Loader
+							type="spinningBubbles"
+							color="#fff"
+						/>
+					) : (
+						TrendingCartProducts.length >
+							0 &&
+						TrendingCartProducts.map(
+							(item) => (
+								<TrendingCard
+									key={item.id}
+									props={item}
+								/>
+							)
+						)
+					)}
 				</div>
 			</main>
 		</>
