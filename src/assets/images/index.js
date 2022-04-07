@@ -18,3 +18,7 @@ export {default as warranty} from "./warranty.png";
 export {default as vision_home} from "./vision_home.webp";
 export {default as vision_img} from "./vision_img.png";
 export {default as Phone} from "./Phone.svg";
+
+export {default as emptyCart} from "./empty_cart.svg";
+export {default as emptyWishlist} from "./empty_wishlist.svg";
+export {default as error404} from "./page_not_found_404.svg";
