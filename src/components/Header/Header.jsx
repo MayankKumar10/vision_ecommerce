@@ -98,15 +98,14 @@ export function Header() {
               id="myBtn"
               className="header-btn transparent-bg button-normal ButtonDomContainer icons-btn-hover buttonHoverShadow"
             >
-              <a
+              <Link
+                to="/login"
                 className="headerAnchorTag flex-column-center"
-                href="/login"
-                target="iframe-main-container"
               >
                 <span className="button-inner-txt">
                   Login
                 </span>
-              </a>
+              </Link>
             </button>
           </div>
         </header>
