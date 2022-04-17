@@ -1,25 +1,78 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {emptyCart} from "../../assets/images";
 import {CartProducts} from "../../context/CartProvider";
 
 export function Cart() {
-  const {products, removeFromCart, total} = CartProducts();
+  const {products, removeFromCart} = CartProducts();
 
-  let totalDisplayscont = total - 165;
+  const [productQty, setProductQty] = useState(products);
+  const [total, setTotal] = useState(0);
+
+  const removeProduct = (product) => {
+    setProductQty(
+      productQty.filter(
+        (currentProduct) =>
+          currentProduct.name !== product.name
+      )
+    );
+    removeFromCart(product);
+    console.log("Product1", products);
+    console.log("Product2", productQty);
+  };
+
+  useEffect(() => {
+    if (productQty.length > 0) {
+      setTotal(
+        productQty.reduce((sum, product) => {
+          return (sum +=
+            product.discountedPrice * product.quantity);
+        }, 0)
+      );
+    }
+  }, [productQty, setProductQty, products]);
+
+  let totalDisplayscont =
+    productQty.length >= 1 ? total - 165 : 0;
+
+  const handleChange = ({id}, CMD) => {
+    setProductQty((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          if (CMD === "INCREMENT") {
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+            };
+          } else if (CMD === "DECREMENT") {
+            return {
+              ...item,
+              quantity:
+                item.quantity === 1
+                  ? removeProduct(item)
+                  : item.quantity - 1,
+            };
+          }
+        }
+        return item;
+      })
+    );
+  };
+
   return (
     <>
       <div className="user-main-container flex-space-evenly-start">
         <main className="product-container border-radius-normal box-shadow col-7">
           <p className="wishlist-text padding-normal">
-            My Cart({products.length})
+            My Cart(
+            {productQty.length})
           </p>
-          {products.length < 1 ? (
+          {productQty.length < 1 ? (
             <>
               <p>Add Some Items To Cart</p>
               <img src={emptyCart} alt="empty-wishlist" />
             </>
           ) : (
-            products.map((product) => {
+            productQty.map((product) => {
               return (
                 <div
                   className="wishlist-card-container"
@@ -33,16 +86,19 @@ export function Cart() {
                           src={product.img}
                           alt=""
                         />
-                        <button className="material-icons-text card-wishlist-icons buttonHoverShadow AvatarImage AvatarIcons flex-row-center icon-wishlist">
-                          <i className="material-icons ">
-                            favorite
-                          </i>
-                        </button>
                       </section>
 
                       <section className="flex-row-center">
                         <div className="AvatarDomMainContainer">
-                          <button className="form-signup-icons">
+                          <button
+                            className="form-signup-icons"
+                            onClick={() =>
+                              handleChange(
+                                product,
+                                "DECREMENT"
+                              )
+                            }
+                          >
                             <i className="material-icons cart-material-icons AvatarImage box-shadow AvatarIcons flex-row-center">
                               remove
                             </i>
@@ -56,7 +112,15 @@ export function Cart() {
                           />
                         </span>
                         <div className="AvatarDomMainContainer">
-                          <button className="form-signup-icons">
+                          <button
+                            className="form-signup-icons"
+                            onClick={() =>
+                              handleChange(
+                                product,
+                                "INCREMENT"
+                              )
+                            }
+                          >
                             <i className="material-icons cart-material-icons AvatarImage box-shadow AvatarIcons flex-row-center">
                               add
                             </i>
@@ -89,9 +153,7 @@ export function Cart() {
                     <button
                       className="delete-icon 
     buttonHoverShadow card-wishlist-icons"
-                      onClick={(e) =>
-                        removeFromCart(product)
-                      }
+                      onClick={() => removeProduct(product)}
                     >
                       <i className="material-icons cart-material-icons">
                         delete
@@ -112,29 +174,35 @@ export function Cart() {
 
           <section className="flex-column-start">
             <section className="flex-space-between cart-checkout">
-              <h4>Price ({total.length})</h4>
-              <span>${total}</span>
+              <h4>Price </h4>
+              <span>
+                ${productQty.length >= 1 && total}
+              </span>
             </section>
 
             <section className="flex-space-between cart-checkout">
               <h4>Discount</h4>
-              <span>${total && "-200"}</span>
+              <span>
+                -${productQty.length >= 1 && "200"}
+              </span>
             </section>
 
             <section className="flex-space-between cart-checkout">
               <h4>Coupons for you</h4>
-              <span>${total && "-15"}</span>
+              <span>
+                -${productQty.length >= 1 && "15"}
+              </span>
             </section>
 
             <section className="flex-space-between cart-checkout">
               <h4>Delivery Charges</h4>
-              <span>${total && "50"}</span>
+              <span>${productQty.length >= 1 && "50"}</span>
             </section>
           </section>
 
           <section className="flex-space-between cart-checkout">
             <h3>Total Amount</h3>
-            <span>${total && totalDisplayscont}</span>
+            <span>$ {totalDisplayscont}</span>
           </section>
 
           <section className="flex-row-center padding-normal">

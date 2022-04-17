@@ -10,11 +10,8 @@ import {WishlistButton} from "./WishlistButton.styled";
 import {emptyWishlist} from "../../assets/images";
 
 export function WishList() {
-  const {
-    WishlistProducts,
-
-    removeFromWishlist,
-  } = UseWishlist();
+  const {WishlistProducts, removeFromWishlist} =
+    UseWishlist();
 
   return (
     <>
