@@ -94,19 +94,19 @@ export function Header() {
               </Link>
             </div>
 
-            <button
-              id="myBtn"
-              className="header-btn transparent-bg button-normal ButtonDomContainer icons-btn-hover buttonHoverShadow"
+            <Link
+              to="/login"
+              className="headerAnchorTag flex-column-center"
             >
-              <Link
-                to="/login"
-                className="headerAnchorTag flex-column-center"
+              <button
+                id="myBtn"
+                className="header-btn transparent-bg button-normal ButtonDomContainer icons-btn-hover buttonHoverShadow"
               >
                 <span className="button-inner-txt">
                   Login
                 </span>
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
         </header>
       </div>
