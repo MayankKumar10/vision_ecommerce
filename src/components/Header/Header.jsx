@@ -100,7 +100,7 @@ export function Header() {
             >
               <a
                 className="headerAnchorTag flex-column-center"
-                href="login"
+                href="/login"
                 target="iframe-main-container"
               >
                 <span className="button-inner-txt">
