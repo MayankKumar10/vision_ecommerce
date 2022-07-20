@@ -46,7 +46,7 @@ export function Login() {
         navigate(from, {replace: true});
       }
     } catch (error) {
-      setError(error.response.data.errors[0]);
+      setError(error.response.data?.errors[0]);
     }
   };
 
