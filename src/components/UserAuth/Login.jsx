@@ -46,8 +46,7 @@ export function Login() {
         navigate(from, {replace: true});
       }
     } catch (error) {
-      console.log('error', error);
-      setError(error?.response?.data?.errors);
+      setError(error.response.data.errors[0]);
     }
   };
 
@@ -148,6 +147,14 @@ export function Login() {
                 </Link>
               </div>
             </div>
+            <div className="AlertDomMainContainer" >
+              <input
+                type="button"
+                className="ButtonDomContainer descriptionOne primary-button flex-evenly buttonHoverShadow col-12"
+                value="Login with TestCredentials"
+                onClick={(e)=>loginHandler(e, {email:'adarshbalika@gmail.com', password:'adarshBalika123'})}
+              />
+              </div>
           </div>
         </form>
       </div>

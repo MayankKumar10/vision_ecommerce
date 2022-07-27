@@ -22,28 +22,17 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <FilterProvider>
-              <HomePage />
-            </FilterProvider>
-          }
-        />
+        
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route
           path="forgot_password"
           element={<ForgotPassword />}
         />
-        <Route
-          path="products"
-          element={
-            <FilterProvider>
-              <ProductListing />
-            </FilterProvider>
-          }
-        />
+        <Route path="/" element={<FilterProvider><HomePage /></FilterProvider>}/>
+        
+        <Route path="products"element={<FilterProvider><ProductListing /></FilterProvider>}/>
+        
         <Route path="/" element={<RequireAuth />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<WishList />} />
