@@ -148,7 +148,7 @@ const removeProduct = async() => {
         <span></span>
         <button
           className="delete-icon 
-buttonHoverShadow card-wishlist-icons"
+          buttonHoverShadow card-wishlist-icons"
           onClick={() => removeProduct(product)}
         >
           <i className="material-icons cart-material-icons">

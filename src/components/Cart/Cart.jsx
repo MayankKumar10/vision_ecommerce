@@ -1,4 +1,9 @@
 import React, {useState, useEffect} from "react";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
 import {emptyCart} from "../../assets/images";
 import {CartProducts} from "../../context/CartProvider";
 import { useUserData } from "../../context/UserDataProvider";
@@ -13,6 +18,24 @@ export function Cart() {
   const [priceSum, discountedPriceSum] = billGenerator(cartProducts);
 	let totalBill = priceSum - discountedPriceSum;
 	const [showModal, setShowModal] = useState(false);
+
+	const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+	const style = {
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		width: 400,
+		bgcolor: '#fff',
+		border: '2px solid #000',
+		boxShadow: 24,
+		borderRadius:'2rem',
+		p: 4,
+	};
+
 	const couponsData = [
 		{
 			id: 1,
@@ -61,7 +84,6 @@ export function Cart() {
 						<div className="padding-xxs flex-space-between">
 							<span>Select coupon</span>
               <BsXCircleFill class='close-btn' onClick={()=> setShowModal(false)} size="15" />
-              
 						</div>
 
 						<div className="modalContainer">
@@ -188,10 +210,35 @@ export function Cart() {
           
 
           <section className="flex-row-center padding-normal">
-            <button className="buy-btn  ButtonDomContainer button-Shadow">
+            <button className="buy-btn  ButtonDomContainer button-Shadow"
+							onClick={handleOpen}>
               Place Order
             </button>
           </section>
+
+					{open &&
+					<Modal
+					open={open}
+					onClose={handleClose}
+					aria-labelledby="modal-modal-title"
+					aria-describedby="modal-modal-description"
+				>
+					<Box sx={style}>
+						<Typography id="modal-modal-title" variant="h6" component="h2">
+							Your Order has been Placed
+						</Typography>
+						{cartProducts.map((product)=>
+						<Box>
+						<Typography id="modal-modal-description" sx={{ mt: 2 }}>
+							{product.name}
+						</Typography>
+						 </Box>
+						)}
+						<h3>Total Amount</h3>
+						 <span>₹ {Math.floor(totalBill - couponDiscount)}</span>
+					</Box>
+				</Modal>
+					}
         </nav>
       </div>
     </>
