@@ -95,21 +95,7 @@ export function ProductListing() {
       ? setCurrPage(start)
       : setCurrPage(currPage - 1);
   };
-  // const {category, price, sortBy, rating} = state;
-
-  // const priceFilter = Price(products, price);
-
-  // const ratingFilter = Rating(priceFilter, rating);
-
-  // const categoryFilter = Category(
-  //   ratingFilter,
-  //   category.Laptop,
-  //   category.Gaming_Laptops,
-  //   category.CPU,
-  //   category.Phones
-  // );
-  // const sortFilter = Sort(categoryFilter, sortBy);
-
+  
   
 
   return !productsLoading ? (

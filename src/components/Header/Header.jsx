@@ -14,15 +14,13 @@ import { useDebounce } from "../../helperFunctions/filterFunctions";
 import { actionTypes } from "../../reducer/actionTypes";
 
 export function Header() {
-  // const {userDataState:{ wishlistProducts}, userDataDispatch} 
-  // = useUserData;
-
   const {productDispatch} = useProducts();
   const {SEARCH,RESET} = actionTypes;
   const navigate = useNavigate();
   const [searchInputState, setSearchInputState] = useState();
   const debounceSearchInput = useDebounce(searchInputState, 500);
-  const {userDataDispatch} = useUserData();
+  const {userDataState, userDataDispatch} = useUserData();
+  const {cartProducts ,wishlistProducts} = userDataState;
   const {
 		auth,
 		setAuth
@@ -34,8 +32,7 @@ export function Header() {
     })
   }, [debounceSearchInput]);
 
-  // console.log('wishlistProducts:', wishlistProducts.length);
-
+ 
   const logoutHandler = () =>{
 		localStorage.clear();
 		setAuth({
@@ -117,7 +114,7 @@ export function Header() {
                 className="headerAnchorTag flex-col-end icons-btn-hover buttonHoverShadow"
                 to="/WishList"
               >
-                <span className='icon-border'>1</span>
+                <span className='icon-border'>{wishlistProducts?.length}</span>
                 <span className='flex-column-center'>
                 <MdFavorite size="25" />
                 <span className="icon-inner-txt">
@@ -130,7 +127,7 @@ export function Header() {
                 className="headerAnchorTag flex-col-end icons-btn-hover buttonHoverShadow"
                 to="/Cart"
               >
-                <span className='icon-border'>1</span>
+                <span className='icon-border'>{cartProducts?.length}</span>
                 <span className='flex-column-center padding-t0-sm'>
                 <MdShoppingCart size="25" />
                 <span className="icon-inner-txt">

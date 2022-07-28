@@ -166,87 +166,10 @@ const removeWishlist = async () =>{
 	}
 }
 
-
 useEffect(() => {
 	cartProducts.find((item)=> item._id === product._id) && setIsInCart(true);
 	wishlistProducts.find((item)=> item._id === product._id) && setIsInWishlist(true);
 },[cartProducts, wishlistProducts]);
-
-
-	// useEffect(() => {
-	// 	const productIsInCart = products.find(
-	// 		(product) => product.name === name
-	// 	);
-
-	// 	const productIsInWishlist =
-	// 		WishlistProducts.find(
-	// 			(product) => product.name === name
-	// 		);
-
-	// 	if (productIsInWishlist) {
-	// 		setIsInWishlist(true);
-	// 	} else {
-	// 		setIsInWishlist(false);
-	// 	}
-
-	// 	if (productIsInCart) {
-	// 		setIsInCart(true);
-	// 	} else {
-	// 		setIsInCart(false);
-	// 	}
-	// }, [WishlistProducts, products, name]);
-
-	// const handleClick = () => {
-	// 	const product = {
-	// 		id,
-	// 		brand,
-	// 		name,
-	// 		price,
-	// 		discountedPrice,
-	// 		img,
-	// 		category,
-	// 		rating,
-	// 		quantity,
-	// 	};
-
-	// 	if (isInCart) {
-	// 		removeFromCart(product);
-			
-	// 	} else {
-	// 		addToCart(product);
-			
-	// 	}
-	// 	addToCartCall()
-	// };
-
-	// const handleWishlist = () => {
-	// 	const product = {
-	// 		id,
-	// 		brand,
-	// 		name,
-	// 		price,
-	// 		discountedPrice,
-	// 		img,
-	// 		category,
-	// 		rating,
-	// 	};
-
-	// 	if (isInWishlist) {
-	// 		removeFromWishlist(product);
-	// 		console.log(
-	// 			"remove wishlist",
-	// 			isInWishlist
-	// 		);
-	// 	} else {
-	// 		console.log(
-	// 			"Add wishlist",
-	// 			isInWishlist
-	// 		);
-	// 		addToWishlist(product);
-	// 	}
-	// };
-
-
 
 	
 	return (
@@ -278,18 +201,14 @@ useEffect(() => {
 				<span className="card-text-container card-brand-text">
 					<span className="card-description">
 						<h5>{name}</h5>
-						<p>
-							Lorem ipsum dolor sit amet
-							consectetur adipisicing elit.
-						</p>
 						<span className="rating-container"></span>
 						<h6>{category}</h6>
 					</span>
 
 					<span className="card-container-price-icons card-footer">
 						<span className="card-price">
-							<span>${discountedPrice}</span>
-							<del>${price}</del>
+							<span>₹{discountedPrice}</span>
+							<del>₹{price}</del>
 						</span>
 						<span className="optionContainer">
 							<button

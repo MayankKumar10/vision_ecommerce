@@ -50,7 +50,7 @@ export function Filter() {
             <h4>Price</h4>
             <span className="flex padding-normal-left0">
               <>
-                <h5>$0</h5>
+                <h5>₹0</h5>
                 <input
                   type="range"
                   className="rangeInput"
@@ -67,7 +67,7 @@ export function Filter() {
                     })
                   }
                 />
-                <h5>${price}</h5>
+                <h5>₹{price}</h5>
               </>
             </span>
           </section>

@@ -26,25 +26,6 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="section-two">
-            <h5>Category</h5>
-            <h6>
-              <a href="">product1</a>
-            </h6>
-            <h6>
-              <a href="">product1</a>
-            </h6>
-            <h6>
-              <a href="">product1</a>
-            </h6>
-            <h6>
-              <a href="">product1</a>
-            </h6>
-            <h6>
-              <a href="">product1</a>
-            </h6>
-          </div>
-
           <div className="section-three">
             <h5>Account</h5>
             <h6>

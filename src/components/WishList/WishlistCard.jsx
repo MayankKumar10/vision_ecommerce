@@ -86,10 +86,6 @@ export const WishlistCard = ({product}) => {
       <span className="card-text-container cart-brand-text">
         <span className="card-description">
           <h5>{product.name}</h5>
-          <p>
-            Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </p>
           <span className="rating-container"></span>
           <h6>{product.category}</h6>
         </span>
@@ -97,9 +93,9 @@ export const WishlistCard = ({product}) => {
         <span className="card-container-price-icons card-footer">
           <span className="card-price">
             <span>
-              ${product.discountedPrice}
+              ₹{product.discountedPrice}
             </span>
-            <del>${product.price}</del>
+            <del>₹{product.price}</del>
           </span>
           <span className="optionContainer">
           <button

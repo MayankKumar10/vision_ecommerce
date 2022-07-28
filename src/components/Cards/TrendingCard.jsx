@@ -157,7 +157,7 @@ export const TrendingCard = ({ props }) => {
 								<span>
 									${discountedPrice}
 								</span>
-								<del>${price}</del>
+								<del>₹{price}</del>
 							</span>
 							<span className="optionContainer">
 								<button

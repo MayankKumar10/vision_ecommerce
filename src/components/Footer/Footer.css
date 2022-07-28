@@ -1,6 +1,6 @@
 .footer-container-main {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background-color: var(--Mak-color-bg-footer);
   color: var(--mak-color-txt-footer);
   margin-top: 0.5rem;
