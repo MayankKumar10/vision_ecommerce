@@ -2,6 +2,7 @@ import { v4 as uuid } from "uuid";
 import {
 	cpu,
 	lapi,
+	Phone,
 } from "../../assets/images";
 /**
  * Category Database can be added here.
@@ -33,7 +34,7 @@ export const categories = [
 	{
 		_id: uuid(),
 		categoryName: "Phones",
-		img: cpu,
+		img: Phone,
 		description:
 			"Non-fiction is writing that gives information or describes real events, rather than telling a story.",
 	},

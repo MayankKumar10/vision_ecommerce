@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/root.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	vision_img,
 	quality,
@@ -8,6 +8,8 @@ import {
 	support,
 	warranty,
 	cpu,
+	lapi,
+	Phone,
 } from "../../assets/images";
 import { AllProducts } from "../../context/ContextProducts";
 import { Loader } from "../Loader/Loader";
@@ -19,6 +21,7 @@ import { BestSellingCard } from "../Cards/BestSellingCard";
 import { getRatedProducts } from "../../helperFunctions";
 import { useProducts } from "../../context";
 import {useUserData} from '../../context/UserDataProvider'
+import {actionTypes} from '../../reducer/actionTypes'
 
 export function HomePage() {
 	const {productState} = useProducts();
@@ -40,6 +43,18 @@ export function HomePage() {
 		products,
 		5
 	);
+
+	const { PHONES, LAPTOP,
+		GAMING_LAPTOPS, CPU, CLEAR} = actionTypes;
+
+	const {productDispatch} = useProducts();
+	const navigate = useNavigate();
+
+	const selectProductHandler = (val) =>{
+		productDispatch({ type: CLEAR });
+		productDispatch({ type: val });
+		navigate('/products')
+	}
 
 	return (
 		<>
@@ -130,6 +145,108 @@ export function HomePage() {
 						</div>
 					</div>
 				</section>
+
+					{/* <!-------------------------------BestSelling Products-------------------------------> */}
+
+					<section className="padding-top-normal1">
+					<h2>BestSelling Products</h2>
+					<div className="mid-card-main-container flex-space-evenly AlertInfo col-12">
+						
+						<div className="mid-card-container sm-card-shadow padding-normal flex-row-center AlertError imgTransition"
+						onClick={()=> selectProductHandler(LAPTOP)}
+						>
+							<section className="flex-row-start">
+								<img
+									className="margin-0 cart-img"
+									src={lapi}
+									alt="cpu"
+								/>
+							</section>
+
+							<span className="card-text-container card-brand-text">
+								<span className="card-description">
+									<h5>
+									Laptop
+									</h5>
+									
+								</span>
+
+								
+							</span>
+						</div>
+
+						<div className="mid-card-container sm-card-shadow padding-normal flex-row-center AlertWarning imgTransition"
+						onClick={()=> selectProductHandler(GAMING_LAPTOPS)}
+						>
+							<section className="flex-row-start">
+								<img
+									className="margin-0 cart-img"
+									src={lapi}
+									alt="cpu"
+								/>
+							</section>
+
+							<span className="card-text-container card-brand-text">
+								<span className="card-description">
+									<h5>
+										Gaming Laptops
+									</h5>
+									
+								</span>
+
+								
+							</span>
+						</div>
+
+						<div className="mid-card-container sm-card-shadow padding-normal flex-row-center AlertError imgTransition"
+						onClick={()=> selectProductHandler(CPU)}
+						>
+							<section className="flex-row-start">
+								<img
+									className="margin-0 cart-img"
+									src={cpu}
+									alt="cpu"
+								/>
+							</section>
+
+							<span className="card-text-container card-brand-text">
+								<span className="card-description">
+									<h5>
+										CPU
+									</h5>
+									
+								</span>
+
+								
+							</span>
+						</div>
+
+						<div className="mid-card-container sm-card-shadow padding-normal flex-row-center AlertSuccess imgTransition"
+						onClick={()=> selectProductHandler(PHONES)}
+						>
+							<section className="flex-row-start">
+								<img
+									className="margin-0 cart-img"
+									src={Phone}
+									alt="cpu"
+								/>
+							</section>
+
+							<span className="card-text-container card-brand-text">
+								<span className="card-description">
+									<h5>
+										Phones
+									</h5>
+									
+								</span>
+
+								
+							</span>
+						</div>
+					</div>
+				</section>
+
+				{/* <!-------------------------------BestSelling Products End-------------------------------> */}
 				
 			</main>
 		</>
