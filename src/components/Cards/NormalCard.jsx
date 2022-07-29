@@ -211,16 +211,25 @@ useEffect(() => {
 							<del>₹{price}</del>
 						</span>
 						<span className="optionContainer">
-							<button
-								className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
-								onClick={addToCartCall}
-								value={isInCart}
-							>
-								{isInCart
-									? "GoToCart"
-									: "Add"}
-								<MdAddShoppingCart size="25" />
-							</button>
+						{isInCart ?
+          <button
+          className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
+          onClick={''}
+          value={isInCart}
+        >
+         {"GoToCart"}    
+          <MdAddShoppingCart size="25" />
+        </button>
+        :
+          <button
+            className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
+            onClick={addToCartCall}
+            value={isInCart}
+          >
+            {"Add"}
+            <MdAddShoppingCart size="25" />
+          </button>  
+        }
 						</span>
 					</span>
 				</span>

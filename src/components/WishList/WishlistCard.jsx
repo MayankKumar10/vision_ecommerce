@@ -24,7 +24,9 @@ export const WishlistCard = ({product}) => {
       try{
         const res = await addToCartAPI(product, auth.token);
         console.log('res add to cart:', res)
-      
+        
+        console.log('isInCart',isInCart)
+
         if(res.status === 201){
           setIsInCart(true);
           userDataDispatch({
@@ -98,16 +100,26 @@ export const WishlistCard = ({product}) => {
             <del>₹{product.price}</del>
           </span>
           <span className="optionContainer">
+          {isInCart ?
           <button
-								className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
-								onClick={addToCartCall}
-								value={isInCart}
-							>
-								{isInCart
-									? "GoToCart"
-									: "Add"}
-								<MdAddShoppingCart size="25" />
-							</button>
+          className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
+          onClick={''}
+          value={isInCart}
+        >
+         {"GoToCart"}    
+          <MdAddShoppingCart size="25" />
+        </button>
+        :
+          <button
+            className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
+            onClick={addToCartCall}
+            value={isInCart}
+          >
+            {"Add"}
+            <MdAddShoppingCart size="25" />
+          </button>  
+        }
+          
           </span>
         </span>
       </span>
