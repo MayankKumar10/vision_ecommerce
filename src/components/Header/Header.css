@@ -16,6 +16,7 @@
 
 .headerContainerMain {
 	background-color: var(--color-pureWhite);
+	height: 10rem;
 }
 
 .flex-col-end{
@@ -36,7 +37,7 @@
 }
 
 .mar-t1{
-	margin-top: 1.3rem;
+	margin-top: .75rem;
 }
 
 .search-container-main {
@@ -46,8 +47,7 @@
 	justify-content: center;
 	padding: 0.8em;
 	margin: 0.5em;
-	width: 15em;
-	height: 1.5em;
+	width: 20rem;
 	border-radius: 1.5em;
 	border: 1px solid #dbdbdb;
 }
@@ -55,6 +55,7 @@
 .button-transparent {
 	border: none;
 	background: transparent;
+	cursor: pointer;
 }
 
 /* .flex {
@@ -67,16 +68,21 @@
 	border: none;
 }
 
+.wishlist_cart{
+	
+}
+
 .material-icons-text {
 	font-size: 1.25em;
 }
 
 .iconsContainer {
-	width: 20rem;
-	height: 4rem
+	width: 25rem;
+	height: 6rem
 }
 
 :root {
 	--Mak-color-bg-footer: #232f3e;
 	--mak-color-txt-footer: #ddd;
 }
+

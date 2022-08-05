@@ -149,7 +149,6 @@ export function HomePage() {
 					{/* <!-------------------------------BestSelling Products-------------------------------> */}
 
 					<section className="padding-top-normal1">
-					<h2>BestSelling Products</h2>
 					<div className="mid-card-main-container flex-space-evenly AlertInfo col-12">
 						
 						<div className="mid-card-container sm-card-shadow padding-normal flex-row-center AlertError imgTransition"

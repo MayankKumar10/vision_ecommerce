@@ -111,10 +111,10 @@ export function Header() {
               </Link>
 
               <Link
-                className="headerAnchorTag flex-col-end icons-btn-hover buttonHoverShadow"
+                className="headerAnchorTag flex-col-end icons-btn-hover buttonHoverShadow wishlist_cart"
                 to="/WishList"
               >
-                <span className='icon-border'>{wishlistProducts?.length}</span>
+                <span className='icon-border'>{wishlistProducts?.length===0? '' : wishlistProducts?.length}</span>
                 <span className='flex-column-center'>
                 <MdFavorite size="25" />
                 <span className="icon-inner-txt">
@@ -127,7 +127,7 @@ export function Header() {
                 className="headerAnchorTag flex-col-end icons-btn-hover buttonHoverShadow"
                 to="/Cart"
               >
-                <span className='icon-border'>{cartProducts?.length}</span>
+                <span className='icon-border'>{cartProducts?.length===0 ? '' : cartProducts?.length}</span>
                 <span className='flex-column-center padding-t0-sm'>
                 <MdShoppingCart size="25" />
                 <span className="icon-inner-txt">

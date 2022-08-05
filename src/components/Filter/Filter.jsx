@@ -50,10 +50,10 @@ export function Filter() {
             <h4>Price</h4>
             <span className="flex padding-normal-left0">
               <>
-                <h5>₹0</h5>
+                <h5>₹2000</h5>
                 <input
                   type="range"
-                  className="rangeInput"
+                  className="rangeInput cursor"
                   name=""
                   id=""
                   step="10000"
@@ -75,26 +75,28 @@ export function Filter() {
           <section className="filter-categories flex-column-start">
             <h4>Category</h4>
 
-            <span className="flex padding-normal-left0">
+            <div className="flex padding-normal-left0"
+            onChange={()=>
+              productDispatch({
+                type: LAPTOP,
+              })
+            }
+            >
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="checkbox"
                 name="Laptop"
                 checked={laptop}
-                onChange={(e) =>
-                  productDispatch({
-                    type: LAPTOP,
-                  })
-                }
               />
+                
               <span className="padding-small-left1">
                 Laptop
               </span>
-            </span>
+            </div>
 
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="checkbox"
                 name="Gaming_Laptops"
                 checked={gaming_laptops}
@@ -111,7 +113,7 @@ export function Filter() {
 
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="checkbox"
                 name="CPU"
                 checked={cpu}
@@ -126,7 +128,7 @@ export function Filter() {
 
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="checkbox"
                 name="Phones"
                 checked={phones}
@@ -146,7 +148,7 @@ export function Filter() {
             <h4>Rating</h4>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="rating"
                 checked={rating === 4}
@@ -164,7 +166,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="rating"
                 checked={rating === 3}
@@ -182,7 +184,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="rating"
                 checked={rating === 2}
@@ -200,7 +202,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="rating"
                 value="1"
@@ -222,7 +224,7 @@ export function Filter() {
             <h4>Discount</h4>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="discount"
                 checked={discount === 50}
@@ -240,7 +242,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="discount"
                 checked={discount === 40}
@@ -258,7 +260,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="discount"
                 checked={discount === 30}
@@ -276,7 +278,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="discount"
                 checked={discount === 20}
@@ -294,7 +296,7 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="discount"
                 value="10"
@@ -316,14 +318,14 @@ export function Filter() {
             <h4>Sort by</h4>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="sortBy"
-                value="lowToHigh"
+                value="LOW_TO_HIGH"
                 checked={sortBy === LOW_TO_HIGH}
-                onChange={() =>
+                onChange={(e) =>
                   productDispatch({
-                    type: LOW_TO_HIGH
+                    type: e.target.value
                   })
                 }
               />
@@ -333,14 +335,14 @@ export function Filter() {
             </span>
             <span className="flex padding-normal-left0">
               <input
-                className="input-radio"
+                className="input-radio cursor"
                 type="radio"
                 name="sortBy"
-                value="highToLow"
+                value="HIGH_TO_LOW"
                 checked={sortBy === HIGH_TO_LOW}
-                onChange={() =>
+                onChange={(e) =>
                   productDispatch({
-                    type: HIGH_TO_LOW
+                    type: e.target.value
                   })
                 }
               />

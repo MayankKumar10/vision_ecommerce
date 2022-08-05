@@ -104,7 +104,7 @@ export function Login() {
                 id=""
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-                placeholder="Confirm Password"
+                placeholder="Password"
                 value={userDetails.password}
                 onChange={(e) =>
                   setUserDetails((prev) => ({
@@ -128,33 +128,32 @@ export function Login() {
               </span>
             </section>
 
-            <div className="formButtonContainer padding-normal margin-normal-left1 flex-evenly">
+            <div className="formButtonContainer padding-normal margin-normal-left1">
               <div className="AlertDomMainContainer">
                 <input
                   type="submit"
-                  className="ButtonDomContainer descriptionOne primary-button flex-evenly buttonHoverShadow"
+                  className="ButtonDomContainer descriptionOne primary-button buttonHoverShadow col-12"
                   value="Sign In"
                 />
               </div>
 
-              <div className="AlertDomMainContainer">
-                <Link to="/Signup">
-                  <input
-                    type="button"
-                    className="ButtonDomContainer descriptionOne primary-button flex-evenly buttonHoverShadow"
-                    value="Sign Up"
-                  />
-                </Link>
-              </div>
-            </div>
-            <div className="AlertDomMainContainer" >
+              <div className="AlertDomMainContainer" >
               <input
                 type="button"
-                className="ButtonDomContainer descriptionOne primary-button flex-evenly buttonHoverShadow col-12"
-                value="Login with TestCredentials"
+                className="ButtonDomContainer descriptionOne primary-button buttonHoverShadow col-12"
+                value="TestCredentials"
                 onClick={(e)=>loginHandler(e, {email:'adarshbalika@gmail.com', password:'adarshBalika123'})}
               />
               </div>
+
+            </div>
+
+            <div className="AlertDomMainContainer padding-normal">
+                <Link to="/Signup">
+                  <h4>Create a account ?</h4>
+                </Link>
+              </div>
+      
           </div>
         </form>
       </div>

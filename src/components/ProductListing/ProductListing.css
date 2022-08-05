@@ -10,6 +10,11 @@
 
 .filter-categories {
 	padding: 1em;
+	cursor: pointer;
+}
+
+.cursor{
+	cursor: pointer;
 }
 
 .text-large {

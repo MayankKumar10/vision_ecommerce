@@ -141,46 +141,31 @@ export function Signup() {
 						</span>
 					</div>
 
-					<div className="formButtonContainer flex-evenly">
+					<div className="formButtonContainer">
 						<div className="AlertDomMainContainer">
 							<input
 								type="submit"
-								className="ButtonDomContainer descriptionOne primary-button flex-evenly buttonHoverShadow"
+								className="ButtonDomContainer descriptionOne primary-button buttonHoverShadow col-12"
 								value="Signup"
 							/>
 						</div>
 
-						<div className="AlertDomMainContainer">
-							<Link to="/Login">
-								<input
-									type="button"
-									className="ButtonDomContainer descriptionOne primary-button flex-evenly buttonHoverShadow"
-									value="Login"
-								/>
-							</Link>
-						</div>
+						<div className="AlertDomMainContainer" >
+              <input
+                type="button"
+                className="ButtonDomContainer descriptionOne primary-button buttonHoverShadow col-12"
+                value="TestCredentials"
+                onClick={(e)=>signupHandler(e, {firstName: 'Mayank', lastName:'Kumar', email:'mayank123@gmail.com', password:'Mayankkumar123'})}
+              />
+              </div>
 					</div>
 
-					<section className="flex-column-center">
-						<div>Or SignUp Using</div>
-
-						<section className="flex-row-center padding-normal">
-							<button className="form-signup-icons">
-								<img
-									className="social-img"
-									src={google}
-									alt="google"
-								/>
-							</button>
-							<button className="form-signup-icons">
-								<img
-									className="social-img"
-									src={github}
-									alt="github"
-								/>
-							</button>
-						</section>
-					</section>
+					<div className="AlertDomMainContainer">
+							<Link to="/Login">
+								<h4>have an account ?</h4>
+							</Link>
+						</div>
+					
 				</form>
 			</div>
 		</>
