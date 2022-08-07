@@ -34,7 +34,7 @@ export function UserPage() {
 						<section className="flex-align-center padding-normal">
 							<h5>Personal Information</h5>
 							<span className="primary-btn padding-normal">
-								<a href="">Edit</a>
+								{/* <a href="">Edit</a> */}
 							</span>
 						</section>
 
@@ -93,11 +93,11 @@ export function UserPage() {
 								<span className="flex-align-center padding-normal">
 									<h5>Email Address</h5>
 									<span className="primary-btn padding-small-left1">
-										<a href="">Edit</a>
+										{/* <a href="">Edit</a> */}
 									</span>
 									<span className="primary-btn padding-small-left1">
 										<a href="">
-											Change Password
+											{/* Change Password */}
 										</a>
 									</span>
 								</span>
@@ -118,9 +118,9 @@ export function UserPage() {
 
 							<div className="user-mobile padding-large-top">
 								<span className="flex-align-center padding-normal">
-									<h5>Email Address</h5>
+									<h5>Phone Number</h5>
 									<span className="primary-btn padding-small-left1">
-										<a href="">Edit</a>
+										{/* <a href="">Edit</a> */}
 									</span>
 								</span>
 

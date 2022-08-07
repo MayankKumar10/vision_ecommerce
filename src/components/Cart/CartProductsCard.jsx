@@ -3,6 +3,7 @@ import { MdFavorite } from 'react-icons/md';
 import { cartCounterAPI, removeProductCartAPI } from '../../API';
 import { useAuth } from '../../context';
 import { CartProducts } from '../../context/CartProvider';
+import { toast } from "react-toastify";
 import { useUserData } from '../../context/UserDataProvider';
 import { actionTypes } from '../../reducer/actionTypes';
 import { WishlistButton } from '../WishList/WishlistButton.styled';
@@ -27,7 +28,7 @@ const removeProduct = async() => {
       })
     }
   }catch(err){
-    //toast.error('err');
+    toast.error('err');
     console.log('Error From Cart:', err)
   }  
 
@@ -38,20 +39,12 @@ const removeProduct = async() => {
     try{
       if(product.qty === 1 && CMD === 'decrement'){
         res = await removeProductCartAPI(product._id, auth.token);
-        console.log('product qty:',product.qty)
-        console.log('res remove:', res.data)
       } else{
         res = await cartCounterAPI(product._id, auth.token, CMD);
-        console.log('res add:',res)
-        console.log('product:', product.qty)
       }
 
       if(res.status === 200){
-        //toast.success('success Text');
-        console.log('Successfully updated cart');
-        console.log('product name:',product.qty)
-        
-
+        toast.success('Successfully Updated cart');   
         userDataDispatch({
           type: SET_CART,
           payload: {cart: res.data.cart}
@@ -59,7 +52,7 @@ const removeProduct = async() => {
       }
     }
     catch(err){
-      // toast.error('couldn't remove from wishlist')
+       toast.error(`Couldn't remove from wishlist`)
       console.log('Error increment');
     }
   }
@@ -82,7 +75,7 @@ const removeProduct = async() => {
               alt=""
             />
             <WishlistButton
-						className="material-icons-text card-wishlist-icons buttonHoverShadow AvatarImage AvatarIcons flex-row-center"
+						className="material-icons-text card-wishlist-icons buttonHoverShadow AvatarImage AvatarIcons flex-row-center cursor"
 						// onClick={auth.isAuth
 						// 	? isInWishlist
 						// 		? removeWishlist
@@ -103,7 +96,7 @@ const removeProduct = async() => {
                 onClick={() =>
                   handleChange("decrement")}
               >
-                <i className="material-icons cart-material-icons AvatarImage box-shadow AvatarIcons flex-row-center">
+                <i className="material-icons cart-material-icons AvatarImage box-shadow AvatarIcons flex-row-center cursor">
                   remove
                 </i>
               </button>
@@ -120,7 +113,7 @@ const removeProduct = async() => {
                 className="form-signup-icons"
                 onClick={() =>handleChange("increment")}
                 >
-                <i className="material-icons cart-material-icons AvatarImage box-shadow AvatarIcons flex-row-center">
+                <i className="material-icons cart-material-icons AvatarImage box-shadow AvatarIcons flex-row-center cursor">
                   add
                 </i>
               </button>
@@ -148,7 +141,7 @@ const removeProduct = async() => {
         <span></span>
         <button
           className="delete-icon 
-          buttonHoverShadow card-wishlist-icons"
+          buttonHoverShadow card-wishlist-icons cursor"
           onClick={() => removeProduct(product)}
         >
           <i className="material-icons cart-material-icons">

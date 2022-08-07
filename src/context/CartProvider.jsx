@@ -7,6 +7,7 @@ import {
   CartInitialState,
   CartReducer,
 } from "../reducer/CartReducer";
+import { toast } from "react-toastify";
 
 const CartContext = createContext(CartInitialState);
 
@@ -19,7 +20,7 @@ function CartProvider({children}) {
   const addToCart = (product) => {
     const updateCart = state.products.concat(product);
     updatePrice(updateCart);
-
+    toast.success(`Item has added to cart`)
     dispatch({
       type: "ADD_TO_CART",
       payload: updateCart,
@@ -31,7 +32,7 @@ function CartProvider({children}) {
       (currentProduct) =>
         currentProduct.name !== product.name
     );
-
+    toast.success(`Item has removed from cart`)
     updatePrice(updateCart);
 
     dispatch({

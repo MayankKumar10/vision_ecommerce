@@ -88,7 +88,8 @@ export function Cart() {
 
 						<div className="modalContainer">
 							<ul className="flex-column gap-s">
-								{couponsData.map((coupon) => (
+								{
+								couponsData.map((coupon) => (
 									<li
 										className={`modal-item gap-s ${
 											totalBill >= coupon.minPurchase ? "" : "btn-disabled"
@@ -98,6 +99,7 @@ export function Cart() {
 										<label htmlFor={`${coupon.name}`} class="flex-row gap-s">
 											<input
 												type="checkbox"
+												name='coupon'
 												className="input-checkbox"
 												checked={couponSelected.some(
 													(currCoupon) => currCoupon.id === coupon.id
@@ -143,17 +145,19 @@ export function Cart() {
             ))
           )}
         </main>
-
+				
+				{ cartProducts.length ?
         <nav className=" margin-normal-left border-radius-normal box-shadow col-4">
 
-        <div class="border-dark txt-bold padding-xs pointer padding-normal">
+        {
+				totalBill> 20000 ? <div class="border-dark txt-bold padding-xs pointer padding-normal">
 					<span
 						onClick={() => setShowModal(true)}
 						className="flex-align-center padding-normal header-btn transparent-bg button-normal buttonHoverShadow"
 					>
 						<BsTagFill size="25" />APPLY COUPONS
 					</span>
-				</div>
+				</div> : ''}
       
 
           <p className="wishlist-text padding-normal">
@@ -170,7 +174,7 @@ export function Cart() {
 
             <section className="flex-space-between cart-checkout">
               <h4>Discount</h4>
-              <span>-₹{discountedPriceSum}</span>
+              <span>-₹{Math.floor(discountedPriceSum)}</span>
             </section>
             
             
@@ -203,7 +207,7 @@ export function Cart() {
 				) : null}
 				  {couponDiscount + discountedPriceSum > 0 ? (
 					<h5 className="cartSavedTxt">{`You saved Rs.${
-						couponDiscount + discountedPriceSum
+						Math.floor(couponDiscount + discountedPriceSum)
 					}`}</h5>
 				) : null}
           </section>
@@ -240,6 +244,8 @@ export function Cart() {
 				</Modal>
 					}
         </nav>
+				:''
+				}
       </div>
     </>
   );

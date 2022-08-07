@@ -316,40 +316,35 @@ export function Filter() {
 
           <section className="filter-categories flex-column-start">
             <h4>Sort by</h4>
+            
             <span className="flex padding-normal-left0">
               <input
                 className="input-radio cursor"
                 type="radio"
-                name="sortBy"
+                name="radio_sort"
                 value="LOW_TO_HIGH"
                 checked={sortBy === LOW_TO_HIGH}
-                onChange={(e) =>
-                  productDispatch({
-                    type: e.target.value
-                  })
-                }
+                onChange={() =>productDispatch({type: LOW_TO_HIGH})}
               />
               <p className="padding-small-left1">
                 Price-Low to High
               </p>
             </span>
+
             <span className="flex padding-normal-left0">
               <input
                 className="input-radio cursor"
                 type="radio"
-                name="sortBy"
+                name="radio_sort"
                 value="HIGH_TO_LOW"
                 checked={sortBy === HIGH_TO_LOW}
-                onChange={(e) =>
-                  productDispatch({
-                    type: e.target.value
-                  })
-                }
+                onChange={() => productDispatch({type: HIGH_TO_LOW})}
               />
               <p className="padding-small-left1">
                 Price-High to Low
               </p>
             </span>
+
           </section>
         </form>
       </nav>

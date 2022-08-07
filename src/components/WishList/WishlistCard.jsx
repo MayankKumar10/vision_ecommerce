@@ -4,12 +4,15 @@ import { useAuth } from '../../context';
 import {  MdAddShoppingCart} from "react-icons/md";
 import { useUserData } from '../../context/UserDataProvider';
 import { actionTypes } from '../../reducer/actionTypes';
-
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 export const WishlistCard = ({product}) => {
   const {userDataState, userDataDispatch} = useUserData();
   const {cartProducts,wishlistProducts} = userDataState;
+  const navigate = useNavigate();
   const {auth} = useAuth();
+
   const { SET_CART, SET_WISHLIST } =
 	actionTypes;
   
@@ -56,7 +59,7 @@ export const WishlistCard = ({product}) => {
         console.log('res remove wishlistData:', res.data.wishlist )
       }
     }catch(err){
-      //toast.error('couldn't remove from wishlist');
+      toast.error(`couldn't remove from wishlist`);
       console.log('err', err);
     }
   }
@@ -102,16 +105,16 @@ export const WishlistCard = ({product}) => {
           <span className="optionContainer">
           {isInCart ?
           <button
-          className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
-          onClick={''}
+          className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal cursor"
           value={isInCart}
+          onClick={()=>navigate('/cart')}
         >
          {"GoToCart"}    
           <MdAddShoppingCart size="25" />
         </button>
         :
           <button
-            className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
+            className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal cursor"
             onClick={addToCartCall}
             value={isInCart}
           >
@@ -127,7 +130,7 @@ export const WishlistCard = ({product}) => {
       <span></span>
       <button
         className="delete-icon 
-buttonHoverShadow card-wishlist-icons"
+        buttonHoverShadow card-wishlist-icons cursor"
         onClick={(e) =>
           removeFromWishlist(product)
         }

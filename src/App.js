@@ -1,5 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 import "./App.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Header,
   Footer,
@@ -32,7 +34,6 @@ function App() {
         <Route path="/" element={<FilterProvider><HomePage /></FilterProvider>}/>
         
         <Route path="products"element={<FilterProvider><ProductListing /></FilterProvider>}/>
-        
         <Route path="/" element={<RequireAuth />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<WishList />} />
@@ -42,6 +43,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
+      <ToastContainer autoClose={1000} position='bottom-right'/>
     </div>
   );
 }

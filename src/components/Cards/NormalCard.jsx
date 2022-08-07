@@ -7,13 +7,13 @@ import {
 	MdAddShoppingCart,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addToCartAPI, addToWishlistAPI, removeProductWishlistAPI } from "../../API";
 import { useAuth } from "../../context";
 import { useUserData } from "../../context/UserDataProvider";
 import { actionTypes } from "../../reducer/actionTypes";
 import "../../styles/root.css";
 import { WishlistButton } from "../WishList/WishlistButton.styled";
-
 
 	// export const addRemoveFunction = async({props}) =>{
 
@@ -116,16 +116,15 @@ const addToCartCall = async () => {
 	
 		if(res.status === 201){
 			setAddToCartState(false);
+			toast.success('Added to cart');
 			userDataDispatch({
 				type: SET_CART,
 				payload: {cart: res.data.cart},
 			});
-			console.log('cartProducts:', cartProducts)
-			console.log('product:', product)
 		}
 
 	}catch(err){
-		console.log('Add to cart Error', err);
+		toast.error(`Couldn't add to cart`);
 	}
 };
 
@@ -134,17 +133,15 @@ const addToWishlistCall = async()=>{
 			const res = await addToWishlistAPI(product, auth.token);
 			console.log('res wishlist:', res )
 			if(res.status === 201){
-				//toast.success('');
+				toast.success('Added to wishlist');
 				setIsInWishlist(true)
 				userDataDispatch({
 					type: SET_WISHLIST,
 					payload: {wishlist: res.data.wishlist}
 				})
-				console.log('res wishlistData:', res.data.wishlist );
-				console.log('wishlist length:', wishlistProducts.length);
 			}
 		}catch(err){
-			//toast.error('couldn't add to wishlist');
+			toast.error(`couldn't add to wishlist`);
 		}
 	}
 
@@ -153,16 +150,14 @@ const removeWishlist = async () =>{
 		const res = await removeProductWishlistAPI(product._id, auth.token);
 		if(res.status === 200){
 			setIsInWishlist(false)
+			toast.success(`Removed from wishlist`);
 			userDataDispatch({
 				type: SET_WISHLIST,
 				payload: {wishlist: res.data.wishlist}
 			})
-			console.log('res remove wishlistData:', res.data.wishlist);
-			console.log('wishlist length:', wishlistProducts.length);
 		}
 	}catch(err){
-		//toast.error('couldn't remove from wishlist');
-		console.log('err', err);
+		toast.error(`couldn't remove from wishlist`);
 	}
 }
 
@@ -185,7 +180,7 @@ useEffect(() => {
 						alt="{img}"
 					/>
 					<WishlistButton
-						className="material-icons-text card-wishlist-icons buttonHoverShadow AvatarImage AvatarIcons flex-row-center"
+						className="material-icons-text card-wishlist-icons buttonHoverShadow AvatarImage AvatarIcons flex-row-center cursor"
 						onClick={auth.isAuth
 							? isInWishlist
 								? removeWishlist
@@ -213,16 +208,16 @@ useEffect(() => {
 						<span className="optionContainer">
 						{isInCart ?
           <button
-          className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
-          onClick={''}
+          className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal cursor"          
           value={isInCart}
+					onClick={()=>navigate('/cart')}
         >
          {"GoToCart"}    
           <MdAddShoppingCart size="25" />
         </button>
         :
           <button
-            className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal"
+            className="card-wishlist-icons buttonHoverShadow icons-btn-hover AvatarImage flex-row-center primary-btn padding-normal cursor"
             onClick={addToCartCall}
             value={isInCart}
           >

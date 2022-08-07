@@ -51,15 +51,11 @@ const getSortedProducts = (ratedProducts, sortBy) => {
   
   if (sortBy === LOW_TO_HIGH)
     return [...ratedProducts].sort(
-      (item1, item2) =>
-        item1.discountedPrice - item2.discountedPrice,
-        console.log('ratedProducts',ratedProducts)
+      (item1, item2) =>item1.discountedPrice - item2.discountedPrice
     );
   if (sortBy === HIGH_TO_LOW)
     return [...ratedProducts].sort(
-      (item1, item2) =>
-        item2.discountedPrice - item1.discountedPrice
-        ,console.log('ratedProducts',ratedProducts)
+      (item1, item2) =>item2.discountedPrice - item1.discountedPrice
     );
 
   return ratedProducts;
